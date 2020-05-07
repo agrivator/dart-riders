@@ -61,7 +61,6 @@ class _HomeTabState extends State<HomeTab> {
           ExpandedTile(),
           ExpandedTile(),
           ExpandedTile(),
-
         ],
       ),
     );
