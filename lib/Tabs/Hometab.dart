@@ -1,8 +1,10 @@
+import 'package:dartriders/Tabs/ProfileTab.dart';
 import 'package:flutter/cupertino.dart';
 import '../error.dart';
 import 'package:flutter/material.dart';
-import '../HomePageTabs/NestedTabBar.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 class HomeTab extends StatefulWidget {
   @override
   _HomeTabState createState() => _HomeTabState();
@@ -11,10 +13,53 @@ class HomeTab extends StatefulWidget {
 class _HomeTabState extends State<HomeTab> {
   @override
   var x1=0;
+  Position _currentPosition;
+  final Geolocator geoLocator = Geolocator()..forceAndroidLocationManager;
+  String _currentAddress = "Location not Available!";
+
   Widget build(BuildContext context) {
+    _getCurrentLocation();
     var size = MediaQuery.of(context).size;
     final theme = Theme.of(context).copyWith(dividerColor: Colors.transparent,splashColor: Colors.transparent,  highlightColor: Colors.transparent);
-    return SingleChildScrollView(
+    return Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60.0),
+          child: Center(
+            child: AppBar(
+              leading: null,
+              title: Padding(
+                padding: const EdgeInsets.only(top: 7),
+                child: Row(
+                  children: <Widget>[
+                    SvgPicture.asset(
+                      'images/location_icon.svg',
+                      width: 22,
+                      height: 22,
+                      color: Colors.green,
+                    ),
+                    if (_currentPosition != null)
+                      Text(
+                        _currentAddress,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    Spacer(),
+                    IconButton(icon: Icon(
+                      Icons.person,
+                      color: Colors.black,),onPressed:
+                    (){Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileTab()),);},)
+                  ],
+                ),
+              ),
+              backgroundColor: Colors.white10,
+              elevation: 0,
+            ),
+          ),
+        ),
+        body: SingleChildScrollView(
           child: x1==0?Column(
         children: <Widget>[
           Container(
@@ -641,7 +686,37 @@ class _HomeTabState extends State<HomeTab> {
               ),
             ],
           ),
+    )
     );
+  }
+  _getCurrentLocation() {
+    geoLocator
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
+        .then((Position position) {
+      setState(() {
+        _currentPosition = position;
+      });
+
+      _getAddressFromLatLng();
+    }).catchError((e) {
+      print(e);
+    });
+  }
+
+  _getAddressFromLatLng() async {
+    try {
+      List<Placemark> p = await geoLocator.placemarkFromCoordinates(
+          _currentPosition.latitude, _currentPosition.longitude);
+
+      Placemark place = p[0];
+
+      setState(() {
+        _currentAddress =
+        " ${place.subLocality}, ${place.locality}, ${place.administrativeArea}";
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 }
 

@@ -1,6 +1,6 @@
+import 'package:dartriders/Tabs/Hometab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../HomeScreen.dart';
 
 class ProfileFormScreen extends StatefulWidget {
   @override
@@ -111,7 +111,7 @@ class _ProfileFormState extends State<ProfileFormScreen> {
                       form.save();
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                        MaterialPageRoute(builder: (context) => HomeTab()),
                       );
                     }
                   },

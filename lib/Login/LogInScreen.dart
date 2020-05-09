@@ -1,6 +1,6 @@
+import 'package:dartriders/Tabs/Hometab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../HomeScreen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'LogInWithPhoneNo.dart';
 
@@ -135,7 +135,7 @@ class LogInScreen extends StatelessWidget {
                 ),
                 onPressed: (){Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                  MaterialPageRoute(builder: (context) => HomeTab()),
                 );},
               )
             ],

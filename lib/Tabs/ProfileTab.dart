@@ -2,7 +2,6 @@ import 'package:dartriders/Tabs/ProfileTab/ContactUs.dart';
 import 'package:dartriders/Tabs/ProfileTab/Settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'ProfileTab/About.dart';
 
 class ProfileTab extends StatefulWidget {
@@ -12,11 +11,33 @@ class ProfileTab extends StatefulWidget {
 
 class _ProfileState extends State<ProfileTab> {
   bool _status = true;
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60.0),
+          child: Center(
+            child: AppBar(
+              leading: null,
+              title: Padding(
+                padding: const EdgeInsets.only(top: 7),
+                child: Row(
+                  children: <Widget>[
+                    Spacer(),
+                    IconButton(icon: Icon(
+                      Icons.person,
+                      color: Colors.black,),onPressed:
+                        (){Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileTab()),);},)
+                  ],
+                ),
+              ),
+              backgroundColor: Colors.white10,
+              elevation: 0,
+            ),
+          ),
+        ),
         body: Container(
           width: MediaQuery.of(context).size.width,
           padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -38,7 +59,7 @@ class _ProfileState extends State<ProfileTab> {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: CircleAvatar(
-                    backgroundImage: AssetImage("images/storea.jpg"),
+                    backgroundImage: AssetImage("images/user.jpg"),
                     radius: 60.0,
                     child: Align(
                       alignment: Alignment.bottomRight,
@@ -63,32 +84,13 @@ class _ProfileState extends State<ProfileTab> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 32.0, vertical: 14.0),
-                          hintText: "Store Name",
-                          hintStyle: TextStyle(fontSize: 13),
-                          prefixIcon: Icon(Icons.store),
-                        ),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return '*Store Name required';
-                          }
-                        },
-                        //onSaved to be implemented
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      TextFormField(
-                        enabled: _status,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: 32.0, vertical: 14.0),
-                          hintText: "Owner Name",
-                          hintStyle: TextStyle(fontSize: 13),
+                          hintText: "Rider Name",
                           prefixIcon: Icon(Icons.person),
+                          hintStyle: TextStyle(fontSize: 13),
                         ),
                         validator: (value) {
                           if (value.isEmpty) {
-                            return '*Store Name required';
+                            return '*Rider Name required';
                           }
                         },
                         //onSaved to be implemented
@@ -98,17 +100,54 @@ class _ProfileState extends State<ProfileTab> {
                       ),
                       TextFormField(
                         enabled: _status,
-                        keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 32.0, vertical: 14.0),
-                          hintText: "Email",
+                          hintText: "Vehicle Name",
                           hintStyle: TextStyle(fontSize: 13),
-                          prefixIcon: Icon(Icons.email),
+                          prefixIcon: Icon(Icons.motorcycle),
                         ),
                         validator: (value) {
                           if (value.isEmpty) {
-                            return '*Email required';
+                            return '*Vehicle Name required';
+                          }
+                        },
+                        //onSaved to be implemented
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        enabled: _status,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 32.0, vertical: 14.0),
+                          hintText: "Vehicle Reg. No",
+                          prefixIcon: Icon(Icons.format_list_numbered),
+                          hintStyle: TextStyle(fontSize: 13),
+                        ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return '*Vehicle Reg. No';
+                          }
+                        },
+                        //onSaved to be implemented
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        enabled: _status,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 32.0, vertical: 14.0),
+                          hintText: "License Number",
+                          hintStyle: TextStyle(fontSize: 13),
+                          prefixIcon: Icon(Icons.library_books),
+                        ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return '*License No required';
                           }
                         },
                         //onSaved to be implemented
@@ -119,39 +158,34 @@ class _ProfileState extends State<ProfileTab> {
                       TextFormField(
                         enabled: _status,
                         keyboardType: TextInputType.number,
+                        maxLines: null,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 32.0, vertical: 14.0),
-                          hintText: "Phone No",
+                          hintText: "Phone",
                           hintStyle: TextStyle(fontSize: 13),
                           prefixIcon: Icon(Icons.phone_android),
                         ),
                         validator: (value) {
                           if (value.isEmpty) {
-                            return '*Phone No required';
+                            return '*Phone number required';
                           }
                         },
-                        //onSaved to be implemented
                       ),
                       SizedBox(
                         height: 20,
                       ),
                       TextFormField(
                         enabled: _status,
-                        keyboardType: TextInputType.multiline,
+                        keyboardType: TextInputType.number,
                         maxLines: null,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 32.0, vertical: 14.0),
-                          hintText: "Address",
+                          hintText: "Total Earnings",
                           hintStyle: TextStyle(fontSize: 13),
-                          prefixIcon: Icon(Icons.add_location),
+                          prefixIcon: Icon(Icons.monetization_on),
                         ),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return '*Address required';
-                          }
-                        },
                       ),
                       SizedBox(
                         height: 20,
