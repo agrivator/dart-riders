@@ -1,4 +1,4 @@
-# dartsellers
+# dartriders
 
 A new Flutter application.
 

@@ -1,5 +1,5 @@
-import 'package:dartsellers/Tabs/ProfileTab/ContactUs.dart';
-import 'package:dartsellers/Tabs/ProfileTab/Settings.dart';
+import 'package:dartriders/Tabs/ProfileTab/ContactUs.dart';
+import 'package:dartriders/Tabs/ProfileTab/Settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

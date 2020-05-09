@@ -1,4 +1,4 @@
-package me.chrisbinsunny.dartsellers
+package me.chrisbinsunny.dartriders
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
