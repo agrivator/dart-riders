@@ -1,6 +1,6 @@
 import 'package:dartriders/Tabs/ProfileTab.dart';
+import 'package:dartriders/Tabs/StoreUserRoad.dart';
 import 'package:flutter/cupertino.dart';
-import '../error.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -47,10 +47,17 @@ class _HomeTabState extends State<HomeTab> {
                         ),
                       ),
                     Spacer(),
-                    IconButton(icon: Icon(
-                      Icons.person,
-                      color: Colors.black,),onPressed:
-                    (){Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileTab()),);},)
+                    ClipOval(
+                      child: InkWell(
+                        onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => ProfileTab())),
+                          child: Image.asset(
+                            'images/user.jpg',
+                            width: 40,height: 40,
+                          ),
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -223,7 +230,7 @@ class _HomeTabState extends State<HomeTab> {
                           FlatButton(
                             child: Text("SHOW STATUS",style: TextStyle(color: Colors.green,fontSize: 19),),
                             onPressed: ()=>
-                                setState(() =>x1++),
+                                setState(() =>x1=1),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
                             highlightColor: Colors.transparent,
                           ),
@@ -357,7 +364,7 @@ class _HomeTabState extends State<HomeTab> {
                           FlatButton(
                             child: Text("SHOW STATUS",style: TextStyle(color: Colors.green,fontSize: 19),),
                             onPressed: ()=>
-                                setState(() =>x1++),
+                                setState(() =>x1=1),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
                             highlightColor: Colors.transparent,
                           ),
@@ -423,7 +430,7 @@ class _HomeTabState extends State<HomeTab> {
                           Spacer(),
                           FlatButton(
                             child: Text("SHOW STATUS",style: TextStyle(color: Colors.green,fontSize: 19),),
-                            onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Error()),);},
+                            onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => StoreUserRoad()),);},
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
                             highlightColor: Colors.transparent,
                           ),
@@ -489,7 +496,7 @@ class _HomeTabState extends State<HomeTab> {
                           Spacer(),
                           FlatButton(
                             child: Text("SHOW STATUS",style: TextStyle(color: Colors.green,fontSize: 19),),
-                            onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Error()),);},
+                            onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => StoreUserRoad()),);},
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
                             highlightColor: Colors.transparent,
                           ),
@@ -570,7 +577,7 @@ class _HomeTabState extends State<HomeTab> {
                             ),
                             Row(
                                 children: <Widget>[
-                                  Text("Chrisbin Sunny",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),),
+                                  Text("Bivin V Varghese",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),),
                                   Spacer(),
                                   Text("₹150",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),),
                                 ]
@@ -666,7 +673,7 @@ class _HomeTabState extends State<HomeTab> {
                                   Spacer(),
                                   FlatButton(
                                     child: Text("ACCEPT",style: TextStyle(color: Colors.green,fontSize: 19),),
-                                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Error()),);},
+                                    onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => StoreUserRoad()),);},
                                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
                                     highlightColor: Colors.transparent,
                                   ),

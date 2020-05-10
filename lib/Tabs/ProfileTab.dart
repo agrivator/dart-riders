@@ -13,6 +13,7 @@ class _ProfileState extends State<ProfileTab> {
   bool _status = true;
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -26,10 +27,12 @@ class _ProfileState extends State<ProfileTab> {
                 child: Row(
                   children: <Widget>[
                     Spacer(),
-                    IconButton(icon: Icon(
-                      Icons.person,
-                      color: Colors.black,),onPressed:
-                        (){Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileTab()),);},)
+                    ClipOval(
+                          child: Image.asset(
+                            'images/user.jpg',
+                            width: 40,height: 40,
+                          ),
+                      )
                   ],
                 ),
               ),

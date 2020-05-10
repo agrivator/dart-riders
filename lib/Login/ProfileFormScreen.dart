@@ -25,7 +25,7 @@ class _ProfileFormState extends State<ProfileFormScreen> {
                   padding: EdgeInsets.only(top: 20.0),
                   child: GestureDetector(
                     child: CircleAvatar(
-                      backgroundImage: AssetImage("images/storea.jpg"),
+                      backgroundImage: AssetImage("images/user.jpg"),
                       radius: 80.0,
                       child: Align(
                         alignment: Alignment.bottomRight,
@@ -51,13 +51,13 @@ class _ProfileFormState extends State<ProfileFormScreen> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 32.0, vertical: 14.0),
-                          hintText: "Store Name",
+                          hintText: "Rider Name",
                           hintStyle: TextStyle(fontSize: 13),
-                          prefixIcon: Icon(Icons.store),
+                          prefixIcon: Icon(Icons.person),
                         ),
                         validator: (value) {
                           if (value.isEmpty) {
-                            return '*Store Name required';
+                            return '*Rider name required';
                           }
                         },
                         //onSaved to be implemented
@@ -69,13 +69,13 @@ class _ProfileFormState extends State<ProfileFormScreen> {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 32.0, vertical: 14.0),
-                          hintText: "Owner Name",
+                          hintText: "Vehicle No",
                           hintStyle: TextStyle(fontSize: 13),
-                          prefixIcon: Icon(Icons.person),
+                          prefixIcon: Icon(Icons.motorcycle),
                         ),
                         validator: (value) {
                           if (value.isEmpty) {
-                            return '*Store Name required';
+                            return '*Vehicle No required';
                           }
                         },
                         //onSaved to be implemented
